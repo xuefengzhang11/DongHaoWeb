@@ -3,14 +3,21 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from 'axios'
+
 import {post,get,patch,put} from './utils/http'
+import api from './utils/api'
+
+
+import 'bootstrap3/dist/css/bootstrap.css'
+import 'bootstrap3/dist/js/bootstrap.js'
+
 //定义全局变量
 Vue.prototype.$post=post;
 Vue.prototype.$get=get;
 Vue.prototype.$patch=patch;
 Vue.prototype.$put=put;
 
+Vue.prototype.url=api;
 
 Vue.config.productionTip = false
 

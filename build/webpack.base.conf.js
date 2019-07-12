@@ -1,4 +1,5 @@
 'use strict'
+
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
@@ -15,6 +16,7 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -78,5 +80,6 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  
 }

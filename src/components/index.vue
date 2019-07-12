@@ -8,7 +8,13 @@
     <br>
      <button @click="submit()">提交</button>
      <br>
-     
+  <div class="container">
+    <span class="a"><a href="#">谷歌真</a></span>
+    <span class="a"><a href="#">谷歌真</a></span>
+    <span class="a"><a href="#">谷歌真</a></span>
+    <span class="a"><a href="#">谷歌真</a></span>
+    <span class="a"><a href="#">谷歌真</a></span>
+  </div>
   </div>
   
 </template>
@@ -19,15 +25,18 @@ export default {
   data () {
     return {
       name:'',
-      sex:''
+      sex:'',
+      data:[]
     }
   },
   methods:{
     submit(){
-      this.$get('10.10.10.72/api/test')
+      this.$get(this.url.test)
       .then((response) => {
-        console.log(response)
-        console.log(444)
+        this.data=response
+        for(var i=0;i<this.data.length;i++){
+          console.log(this.data[i].name)
+        }
       })
     }
   }
@@ -35,6 +44,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style style="scss" scoped>
+.container{
+display:flex;
+flex-wrap:nowrap;
+justify-content: space-between;
+
+}
 
 </style>
