@@ -3,13 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import pages from './pages'
 import {post,get,patch,put} from './utils/http'
 import api from './utils/api'
 
-
-import 'bootstrap3/dist/css/bootstrap.css'
-import 'bootstrap3/dist/js/bootstrap.js'
+import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min'
+ 
 
 //定义全局变量
 Vue.prototype.$post=post;
