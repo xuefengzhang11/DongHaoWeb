@@ -29,23 +29,23 @@ export default {
     },
     methods:{
       go() {
-    this.timer = setInterval(() => {
-        this.autoPlay()
-    }, 4000)
-},
-stop() {
-    clearInterval(this.timer)
-    this.timer = null
-},
-change(index) {
-    this.currentIndex = index
-},
-autoPlay() {
-    this.currentIndex++
-    if (this.currentIndex > this.slideList.length - 1) {
-        this.currentIndex = 0
-    }
-}
+        this.timer = setInterval(() => {
+          this.autoPlay()
+        }, 4000)
+      },
+      stop() {
+          clearInterval(this.timer)
+          this.timer = null
+      },
+      change(index) {
+          this.currentIndex = index
+      },
+      autoPlay() {
+          this.currentIndex++
+          if (this.currentIndex > this.slideList.length - 1) {
+              this.currentIndex = 0
+          }
+      }
     },
     mounted() {  
     //在DOM加载完成后，下个tick中开始轮播

@@ -1,43 +1,70 @@
 <template>
-  <div class="box">
+  <div class="box ">
      <!--搜索栏 -->
     <div class="container logo-box">
-      <span class="logo-img" style="display:inline-block;">东昊国际</span>
+      <span class="logo-img" style="display:inline-block;"><span>东昊国际</span></span>
       <span class="logo-select">
         <input type="text" placeholder="请输入港口信息" v-model="select" class="select-content"> 
         <button class="select-icon"><img src="../assets/select.png" alt="搜索"></button>
+      </span>
+      <span class="logo-user" style="display:inline-block;">
+        <span v-if="islogin===false"><a href="#" @click="tologin(1)">登录</a>/<a href="#" @click="tologin(0)">注册</a></span>
+        <span v-else><a href="#">个人中心</a></span>
       </span>
     </div>
      <!--导航栏 -->
     <div class="nav-box">
       <div style="width:80%;margin:auto;">
         <ul class="row position-relative">
-          <li class="nav-title1"><a href="">网站首页</a></li>
+          <li class="nav-title1" :style="{background:pages===1?'rgb(11, 121, 238)':'#3B99FC'}"><a href="#" >首页</a></li>
+          <li class="nav-title1"><a href="">工具箱</a></li>
           <li class="nav-title1"><a href="">主营业务</a>
-            <ul class="row d-sm-none d-xs-none" style="z-index:999;">
-              <li><a href="">国际海运</a></li>
-              <li><a href="">国际空运</a></li>
-              <li><a href="">专业报关</a></li>
-              <li><a href="">大件运输</a></li>
+            <ul class="row" style="z-index:999;">
+              <li><a href="">订舱</a></li>
+              <li><a href="">报关</a></li>
+              <li><a href="">运输</a></li>
+              <li><a href="">仓储</a></li>
+              <li><a href="">证件办理</a></li>
               <li><a href="">保税业务</a></li>
-              <li><a href="">外贸代理</a></li>
-              <li><a href="">内贸运输</a></li>
+              <li><a href="">关务方案定制</a></li>
+              <li><a href="">账册核销代理</a></li>
             </ul>
           </li>
-          <li class="nav-title1"><a href="">公共信息查询</a></li>
-          <li class="nav-title1"><a href="">行业动态</a></li>
+          <li class="nav-title1"><a href="">在线下单</a></li>
+          <li class="nav-title1"><a href="">货物追踪</a></li>
           <li class="nav-title1"><a href="">关于东昊</a></li>
-          <li class="nav-title1"><a href="">联系我们</a></li>
         </ul>
        </div>
     </div>
      <!--轮播图 -->
    <div class="casual"><casual></casual></div>
+   <!-- 公司的证书-->
+    <div class="container">
+        <div class="wrap">
+          <ul id="list">
+            <li><img src="../assets/credent1.jpg"/></li>
+            <li><img src="../assets/credent2.jpg"/></li>
+            <li><img src="../assets/credent3.jpg"/></li>
+            <li><img src="../assets/credent4.jpg"/></li>
+            <li><img src="../assets/credent5.jpg"/></li>
+            <li><img src="../assets/credent6.jpg"/></li>
+            <li><img src="../assets/credent7.jpg"/></li>
+           </ul>
+        </div>
+    </div>
     <!--底部 -->
    <div class="footer">
      <!--友情链接 -->
-     <div class="href">
-      
+     <div class="href container">
+       <p>友情链接</p>
+       <div class="href-box">
+          <span><a href="https://www.oocl.com/schi/Pages/default.aspx"><img src="../assets/friend1.jpg" /></a></span>
+          <span><a href="https://www.kline.com/"><img src="../assets/friend2.jpg" /></a></span>
+          <span><a href="https://www.rclgroup.com/"><img src="../assets/friend3.jpg" /></a></span>
+          <span><a href="http://www.apl.com/"><img src="../assets/friend4.jpg" /></a></span>
+          <span><a href="http://www.csav.com/special-services/en/Pages/Home.aspx"><img src="../assets/friend5.jpg" /></a></span>
+          <span><a href="https://www.hapag-lloyd.com/en/home.html"><img src="../assets/friend6.jpg" /></a></span>
+       </div>
      </div>
       <!--版权 -->
      <div class="publish">
@@ -56,12 +83,19 @@ export default {
   name: 'index',
   data () {
     return {
-      select:'',
+      select:'',  //搜索框里输入的内容
+      islogin:false,//false未登录，true已登录
+      pages:1,// 当前在首页为1
     }
   },
   methods:{
-    
-  }
+    tologin:function(e){
+      var a =e;
+      this.$router.push({name:'aa',params:{id:a}})
+    }
+  },
+  watch: {
+},
 }
 </script>
 
@@ -75,7 +109,7 @@ export default {
   }
 }
 @mixin select-ipt{
-    width: 50%;
+    width:40%;
     padding-left: 1rem;
     font-size:0.8rem;
     box-sizing:border-box;
@@ -84,10 +118,18 @@ export default {
 .logo-box{
   padding: 1%;
   .logo-img{
-    width: 35%;
+    width: 30%;
   }
+  @media (max-width:768px){
+    .logo-img{
+      width: 20%;
+    }
+      .logo-img>span{
+        display: none;
+      }
+    }
   .logo-select{
-    width: 65%;
+    width: 48%;
     .select-content{
       @include select-ipt;
       height:2rem;
@@ -113,7 +155,13 @@ export default {
       }
     }
   }
+  .logo-user{
+    width: 20%;
+    text-align: center;
+  }
+
 }
+
 // 导航栏
 .nav-box{
   height: 2.5rem;
@@ -134,16 +182,15 @@ export default {
       display: none;
     }
     ul li{
-      width:14.2%; 
+      width:12.5%; 
       text-align: center;
       line-height: 5rem;
       float:left;
-      &:hover{
-       
-      }
+      border-right:1px solid #eee;
     }
     &:hover{
-      background: rgb(11, 121, 238);
+      background: rgb(30, 133, 243);
+      cursor: pointer;
     }
   &:hover ul{
       display: block;
@@ -160,6 +207,14 @@ export default {
     font-size:1%;
     .nav-title1{
       line-height:1.5rem;
+      ul{
+        margin-top: -4%;
+        height:2rem;
+        li{
+          line-height:1.5rem;
+          font-size: 0.3%;
+        }
+      }
     }
   }
 }
@@ -168,6 +223,62 @@ export default {
   width: 100%;
   height:30%;
 }
+//公司证书
+.wrap{
+    width: 100%;
+    height: 10rem;
+    position: relative; 
+    overflow: hidden;
+    
+    #list{
+        position: absolute;
+        left: 0; 
+        top: 0; 
+        margin: 0; 
+        padding: 0;    
+        -webkit-animation:move 6s linear 0s infinite; 
+        width:200%; 
+        
+        li {
+            list-style: none; 
+            width:10%; 
+            height: 10rem;
+            border: 1px solid #000; 
+            background: #fff; 
+            color: #fff; 
+            text-align: center;
+            float: left;
+            margin-left: 0.1%;
+            img{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+        }
+    }
+    @-webkit-keyframes move{
+    from {
+          left: 0;
+    }
+    to {
+          left:-100%;
+    }
+  }
+  @keyframes move {
+    from {
+       left: 0;
+    }
+    to{
+       left: -100%;
+    }
+  }
+  &:hover #list {
+    -webkit-animation-play-state: paused; /*动画暂停播放*/
+  }
+}
+
+      
+
 //底部
 .footer{
   width: 100%;
@@ -177,6 +288,17 @@ export default {
   bottom:0;
   .href{
     height:60%;
+    p{
+      padding:0.5rem 0;
+    }
+    .href-box{
+      margin-top: -0.2rem;
+      width:100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content:space-between;
+    }
   }
   .publish{
     height:40%;

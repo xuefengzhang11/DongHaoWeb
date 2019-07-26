@@ -3,22 +3,26 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import pages from './pages'
+
 import {post,get,patch,put} from './utils/http'
 import api from './utils/api'
+import {setCookie, getCookie, delCookie} from './utils/cookie.js';
 
-import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
- 
+
+
 
 //定义全局变量
 Vue.prototype.$post=post;
 Vue.prototype.$get=get;
 Vue.prototype.$patch=patch;
 Vue.prototype.$put=put;
-
 Vue.prototype.url=api;
+Vue.prototype.$setCookie=setCookie;
+Vue.prototype.$getCookie=getCookie;
+Vue.prototype.$delCookie=delCookie;
+
 
 Vue.config.productionTip = false
 
