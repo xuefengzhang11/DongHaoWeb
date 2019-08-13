@@ -1,104 +1,58 @@
+
 <template>
-  <div class="echarts">
-    <div :style="{height:'400px',width:'100%'}" ref="myEchart"></div>
+  <div class="box">
+   <div>{{showmsg}}</div>
+            <input v-model="value" placeholder="请输入..." />
+            <Button type="info" @click="sendMsg">信息按钮</Button>
+
   </div>
 </template>
 <script>
-  import echarts from "echarts";
-  //   import '../../node_modules/echarts/map/js/world.js'
-  import '../../node_modules/echarts/map/js/china.js' // 引入中国地图数据
+import signalR from 'signalr'
   export default {
-    name: "echarts",
-    props: ["userJson"],
+    name: "aa",
     data() {
       return {
-        chart: null
+        value: "",
+              showmsg: "",
+              proxy: {}
       };
     },
     mounted() {
-      this.chinaConfigure();
+     this.connectServer();
     },
-    beforeDestroy() {
-      if (!this.chart) {
-        return;
-      }
-      this.chart.dispose();
-      this.chart = null;
-    },
+    
     methods: {
-      chinaConfigure() {
-        let myChart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置    
-        window.onresize = myChart.resize;
-        myChart.setOption({ // 进行相关配置
-          backgroundColor: "#02AFDB",
-          tooltip: {}, // 鼠标移到图里面的浮动提示框
-          dataRange: {
-            show: false,
-            min: 0,
-            max: 1000,
-            text: ['High', 'Low'],
-            realtime: true,
-            calculable: true,
-            color: ['orangered', 'yellow', 'lightskyblue']
-          },
-          geo: { // 这个是重点配置区
-            map: 'china', // 表示中国地图
-            roam: true,
-            label: {
-              normal: {
-                show: true, // 是否显示对应地名
-                textStyle: {
-                  color: 'rgba(0,0,0,0.4)'
-                }
-              }
-            },
-            itemStyle: {
-              normal: {
-                borderColor: 'rgba(0, 0, 0, 0.2)'
-              },
-              emphasis: {
-                areaColor: null,
-                shadowOffsetX: 0,
-                shadowOffsetY: 0,
-                shadowBlur: 20,
-                borderWidth: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
-          },
-          // series: [{
-          //     type: 'scatter',
-          //     coordinateSystem: 'geo' // 对应上方配置
-          //   },
-          //   {
-          //     name: '启动次数', // 浮动框的标题
-          //     type: 'map',
-          //     geoIndex: 0,
-          //     data: [{
-          //       "name": "北京",
-          //       "value": 599
-          //     }, {
-          //       "name": "上海",
-          //       "value": 142
-          //     }, {
-          //       "name": "黑龙江",
-          //       "value": 44
-          //     }, {
-          //       "name": "深圳",
-          //       "value": 92
-          //     }, {
-          //       "name": "湖北",
-          //       "value": 810
-          //     }, {
-          //       "name": "四川",
-          //       "value": 453
-          //     }]
-          //   }
-          // ]
-        })
-      }
+      //与后端链接的接口
+       connectServer() {
+            var $this = this;
+            //如果前后端为同一个端口，可不填参数。如果前后端分离，这里参数为服务器端的URL
+            var conn = $.hubConnection("http://10.10.10.103:12345/chatHub/hubs", { useDefaultPath: false })
+            //broadcastHub是后端给的
+            $this.proxy = conn.createHubProxy("broadcastHub");
+            //broadcastMessage是后端给的
+            $this.proxy.on("broadcastMessage", (data) => {
+                $this.showmsg+= data;
+                console.log('demo ReceiveMsg:', data)
+            })
+            // conn.start()成功后才表示signaIR连接成功
+            conn.start().done((data) => {
+                $this.sendMsg()
+            }).fail((data) => {
+              console.log('conn fail')
+            });
+        },
+        sendMsg() {
+          console.log('1111')
+        }
     }
   }
 </script>
 <style lang="scss" scoped>
+.box{
+            background-color: #99CCFF;
+            border: thick solid #808080;
+            padding: 20px;
+            margin: 20px;
+        }
 </style>

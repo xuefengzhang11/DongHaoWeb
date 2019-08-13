@@ -87,6 +87,9 @@ export default {
     img {
       width: 100%;
       height: 100%;
+      opacity: 1;
+      // animation: fateimg 100s linear infinite;
+      // animation-delay: 1s;
     }
   }
 }
@@ -101,16 +104,22 @@ export default {
   font-size: 0;
   span {
     display: inline-block;
-    height: 0.4rem;
-    width: 2rem;
-    margin: 0 0.3rem;
-    background-color: #b2b2b2;
+    height: 0.8rem;
+    width:0.8rem;
+    border-radius: 50%;
+    border:1px solid #000;
+    margin: 0 0.6rem;
+    background-color: #fff;
     cursor: pointer;
   }
   .active {
-    background-color: #949090;
+    background-color: rgba(0, 0, 0, 0.329);
   }
 }
+ @keyframes fateimg{
+   0%{opacity: 1;}
+   100%{opacity:0;}
+ }
 .list-enter-to {
   transition: all 1s ease;
   transform: translateX(0);
