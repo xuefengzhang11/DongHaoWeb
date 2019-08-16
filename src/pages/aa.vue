@@ -42,6 +42,7 @@ import signalR from 'signalr'
               console.log('conn fail')
             });
         },
+        //发送ajax
         sendMsg() {
           console.log('1111')
         }

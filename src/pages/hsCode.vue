@@ -2,8 +2,8 @@
 <template>
   <div>
     <Nav :currentpage="2"></Nav>
-    
-    <!-- <div class="box">
+     <div class="goods-img"><img src="../assets/1.jpg"></div>
+    <div class="box">
       <div class="leftnav">
         <ul>
           <li :class="pages===1?'leftaside2':'leftaside1'" @click="toDetailpage(1)">HS编码模糊查询</li>
@@ -50,7 +50,7 @@
          <pagination v-show="total>0" :total="total" :page.sync="page" :limit.sync="limit" @pagination="getList" />
         </div>
       </div> 
-    </div> -->
+    </div>
    </div>
 </template>
 <script>
@@ -116,6 +116,25 @@
   }
 </script>
 <style lang="scss" scoped>
+.goods-img{
+  height: 25rem;
+  img{
+    height: 100%;
+    object-fit:cover;
+    width: 100%
+  }
+}
+@media  (max-width:1024px){
+    .goods-img{
+      height: 15rem;
+    }
+}
+@media  (max-width:768px){
+    .goods-img{
+      height: 10rem;
+      width: 100%;
+    }
+}
 .box{
   width: 60%;
   margin: 2% auto;
@@ -124,7 +143,6 @@
     float:left;
     width: 20%;
     ul{
-        background: rgb(206, 67, 67);
         li{
           width: 100%;
           height: 5rem;
@@ -132,16 +150,15 @@
           text-align: center;
           color:#fff;
           &:hover{
-            background: rgb(133, 132, 132);
-            color:#000;
+            background:  rgba(143, 217, 235, 0.555);
             cursor: pointer;
           }
         }
         .leftaside1{
-          background: rgb(206, 67, 67);
+          background: rgba(108, 174, 190, 0.795);
         }
         .leftaside2{
-          background: rgb(133, 132, 132);
+          background:rgba(88, 190, 216, 0.651);
         }
     }
   }
@@ -149,18 +166,21 @@
     float:right;
     margin-right:10%;
     width: 55%;
-    height: 30rem;
-    // background: rgb(223, 117, 117);
     input{
       display: block;
       margin:auto;
       width: 60%;
-      height: 8%;
+      height:3rem;
       padding-left:1rem;
     }
     .databox{
       border:1px solid #000;
       margin: 3% 0;
+    }
+    .diatancepage{
+      .pagination-container{
+        background: #f3f3f3;
+      }
     }
   }
 }

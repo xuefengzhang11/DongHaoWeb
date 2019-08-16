@@ -6,6 +6,7 @@ import abouts from '@/pages/abouts'
 import aa from '@/pages/aa'
 import hsCode from '@/pages/hsCode'
 import goods from '@/pages/goods'
+import purchase from '@/pages/purchase'
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +40,11 @@ export default new Router({
       path: '/goods',
       name: 'goods',
       component: goods
+    },
+    {
+      path: '/purchase',
+      name: 'purchase',
+      component: purchase
     }
   ]
 })

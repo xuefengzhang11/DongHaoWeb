@@ -18,7 +18,7 @@
       <div style="position: relative;">
         <span class="nav-logo"></span>
         <ul class="row">
-          <li :class="pages===1?'nav-title1':'nav-title2'" @click="toIndex($event)">首页</li>
+          <li :class="pages===1?'nav-title1':'nav-title2'" @click="toNav(1)">首页</li>
           <li :class="pages===2?'nav-title1':'nav-title2'">工具箱
             <ul class="row" style="z-index:999;">
               <router-link :to="{ path: '/hsCode' ,query:{pageid:1}}"><li style="width:16.6%;">HS编码模糊查询</li></router-link>
@@ -41,9 +41,9 @@
               <li>账册核销代理</li>
             </ul>
           </li>
-          <li :class="pages===4?'nav-title1':'nav-title2'">在线下单</li>
-          <li :class="pages===5?'nav-title1':'nav-title2'" @click="toGoods($event)">货物追踪</li>
-          <li :class="pages===6?'nav-title1':'nav-title2'" @click="toUs($event)">关于东昊</li>
+          <li :class="pages===4?'nav-title1':'nav-title2'" @click="toNav(4)">在线下单</li>
+          <li :class="pages===5?'nav-title1':'nav-title2'" @click="toNav(5)">货物追踪</li>
+          <li :class="pages===6?'nav-title1':'nav-title2'" @click="toNav(6)">关于东昊</li>
         </ul>
        </div>
     </div>
@@ -68,19 +68,17 @@ export default {
         var a =e; //a=1为登录，a=0为注册
         this.$router.push({name:'login',params:{id:a}})
       },
-      toIndex:function(){
-       this.pages=1
-       this.$router.push({name:'index'})
-      },
-      toUs:function(){
-       this.pages=6
-       this.$router.push({name:'abouts'})
-
-      },
-      toGoods:function(){
-       this.pages=5
-       this.$router.push({name:'goods'})
-
+      toNav:function(e){
+        this.pages=e
+        if(e==1){
+          this.$router.push({name:'index'})
+        } else if(e==4){
+          this.$router.push({name:'purchase'})
+        }else if(e==5){
+          this.$router.push({name:'goods'})
+        }else if(e==6){
+          this.$router.push({name:'abouts'})
+        }
       },
     },
     created(){

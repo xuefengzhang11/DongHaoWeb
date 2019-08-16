@@ -112,6 +112,12 @@ export default {
     background-color: #fff;
     cursor: pointer;
   }
+  @media  (max-width:767px){
+    span{
+      height: 0.6rem;
+    width:0.6rem;
+    }
+  }
   .active {
     background-color: rgba(0, 0, 0, 0.329);
   }

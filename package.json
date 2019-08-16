@@ -17,6 +17,7 @@
     "node-sass": "^4.12.0",
     "popper.js": "^1.15.0",
     "signalr": "^2.4.1",
+    "v-distpicker": "^1.2.1",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.22",
     "vue-router": "^3.0.1"

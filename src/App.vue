@@ -32,5 +32,8 @@ ul li{
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   background: #f3f3f3;
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
 }
 </style>
