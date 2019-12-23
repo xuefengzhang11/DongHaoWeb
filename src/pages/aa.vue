@@ -32,6 +32,7 @@ import signalR from 'signalr'
             $this.proxy = conn.createHubProxy("broadcastHub");
             //broadcastMessage是后端给的
             $this.proxy.on("broadcastMessage", (data) => {
+               console.log('222')
                 $this.showmsg+= data;
                 console.log('demo ReceiveMsg:', data)
             })

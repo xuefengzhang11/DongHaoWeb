@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/pages/index'
-import login from '@/pages/login'
+import loginregist from '@/pages/loginregist'
 import abouts from '@/pages/abouts'
 import aa from '@/pages/aa'
-import hsCode from '@/pages/hsCode'
+import mainBussiness from '@/pages/mainBussiness'
 import goods from '@/pages/goods'
-import purchase from '@/pages/purchase'
+import changelanguage from '@/pages/changelanguage'
+import custeregist from '@/pages/custeregist'
 Vue.use(Router)
 
 export default new Router({
@@ -17,9 +18,9 @@ export default new Router({
       component: index
     },
     {
-      path: '/login',
-      name: 'login',
-      component: login
+      path: '/loginregist',
+      name: 'loginregist',
+      component: loginregist
     },
     {
       path: '/aa',
@@ -32,9 +33,9 @@ export default new Router({
       component: abouts
     },
     {
-      path: '/hsCode',
-      name: 'hsCode',
-      component: hsCode
+      path: '/mainBussiness',
+      name: 'mainBussiness',
+      component: mainBussiness
     },
     {
       path: '/goods',
@@ -42,9 +43,15 @@ export default new Router({
       component: goods
     },
     {
-      path: '/purchase',
-      name: 'purchase',
-      component: purchase
-    }
-  ]
+      path: '/changelanguage',
+      name: 'changelanguage',
+      component: changelanguage
+    },
+    {
+      path: '/custeregist',
+      name: 'custeregist',
+      component: custeregist
+    },
+  ],
+  mode:'history'   //去除#号
 })

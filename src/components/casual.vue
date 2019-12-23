@@ -19,11 +19,9 @@ export default {
           currentIndex:0,//图片索引
           timer: '',
           slideList:[
-           {"id":0,"image":require('../assets/1.jpg')} ,
-            {"id":1,"image":require('../assets/2.jpg')} ,
-            {"id":2,"image":require('../assets/3.jpg')} ,
-            {"id":3,"image":require('../assets/4.jpg')} ,
-           {"id":4,"image":require('../assets/5.jpg')} ,
+           {"id":0,"image":require('../assets/casual2.jpg')} ,
+            {"id":1,"image":require('../assets/casual4.jpg')} ,
+            {"id":2,"image":require('../assets/casual6.jpg')} ,
           ]
         }
     },
@@ -61,20 +59,20 @@ export default {
 
 .carousel-wrap {
   position: relative;
-  height:30rem;
+  height:37.5rem;
   width: 100%;
   overflow: hidden;
   // 删除
   background-color: #fff;
 }
 @media screen and (max-width:768px){
-  .carousel-height{
-    height:10rem;
+  .carousel-wrap{
+    height:20rem;
   }
 }
-@media screen and (max-width:992px) and (min-width: 768px){
-  .carousel-height{
-    height:15rem;
+@media screen and (max-width:1024px) and (min-width: 768px){
+  .carousel-wrap{
+    height:30rem;
   }
 }
 .slide-ul {

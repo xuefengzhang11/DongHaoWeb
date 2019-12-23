@@ -8,6 +8,7 @@
 </template>
 
 <script>
+//根据后台传过来的坐标，在画布对应位置上显示图片以及信息
 export default {
   
   name: 'canvas',

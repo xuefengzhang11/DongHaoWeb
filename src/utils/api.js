@@ -1,5 +1,5 @@
-const baseURL='http://10.10.10.72:8091/'
+const baseURL='http://10.10.10.241/'
 const URL={
     test:baseURL+'api/todo'
 }
-export default URL
+export default baseURL
